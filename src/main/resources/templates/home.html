@@ -1,0 +1,80 @@
+<!-- src/main/resources/templates/index.html -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Enterprise Management System</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/0f711b6635.js" crossorigin="anonymous"></script>
+
+</head>
+    <header th:fragment="header">
+
+
+
+        <!--
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="dropdown" sec:authorize="!isAuthenticated()">
+                <a class="btn btn-secondary dropdown-toggle" href="@{/login}" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span> sec:authentication="name"</span>
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+
+                    <form th:action="@{/logout}" method="post">
+                        <button class="dropdown-item" type="submit">Sign off</button>
+                    </form>
+
+                </ul>
+            </div>
+        </nav>
+
+        -->
+    </header>
+
+<body>
+
+<main>
+    <div class="px-4 py-5 text-center">
+        <img src="img/office.png" class="d-block mx-auto mb-4" height="120" alt="Enterprise"/>
+        <h1 class="display-5 fw-bold">Enterprise Management System</h1>
+
+        <!--
+        <div class="col-lg-2 mx-auto form-floating mb-2">
+            <input type="text" class="form-control">
+            <label Username></label>
+        </div>
+        <div class="col-lg-2 mx-auto form-floating mb-2">
+            <input type="password" class="form-control">
+            <label Password> </label>
+        </div>
+        -->
+
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Grow Your Business With Gesoft ERP Solutions.
+                Explore the Gesoft ERP Resource Kit.</p>
+            <div sec:authorize="!isAuthenticated()">
+                <a th:href="@{/oauth2/authorization/auth0}"><button type="button" class="btn btn-primary btn-lg px-4 gap-3 mb-2"><i class="fa-solid fa-business-time"></i>&nbsp; Log In </button></a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{/enterprises}"><button type="button" class="btn btn-primary btn-lg px-4 gap-3 mb-2"><i class="fa-solid fa-business-time "></i>&nbsp; Enterprises </button></a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{/employees}"><button type="button" class="btn btn-primary btn-lg px-4 gap-3 mb-2"><i class="fa-solid fa-business-time"></i>&nbsp; Employees </button></a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{/transactions}"><button type="button" class="btn btn-primary btn-lg px-4 gap-3 mb-2"><i class="fa-solid fa-business-time"></i>&nbsp; Transactions </button></a>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
